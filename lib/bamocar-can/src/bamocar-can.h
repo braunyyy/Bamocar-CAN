@@ -1,10 +1,11 @@
 #ifndef bamocar_can_h
 #define bamocar_can_h
+#include "mbed.h"
 
 class Bamocar
 {
 public:
-  Bamocar();
+  Bamocar(CAN* can);
 
   void startCAN();
 
@@ -36,6 +37,10 @@ private:
   char m_data[3];
 
   void sendCAN(char stmp[]);
+
+  CAN* _can;
+  CANMessage recieveMsg;
+  CANMessage sendMsg;
 };
 
 #endif
